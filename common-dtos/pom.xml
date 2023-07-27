@@ -1,0 +1,63 @@
+<!-- pom.xml -->
+<!-- This is the Maven Project Object Model (POM) file for the "common-dtos" project. -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--
+    The project element is the root of the POM.
+    It defines the basic project information and its configuration.
+    -->
+
+    <!-- Parent Project Information -->
+    <parent>
+        <!-- Define the parent project's artifactId, groupId, and version. -->
+        <artifactId>saga-choreography-pattern</artifactId>
+        <groupId>com.javatechie</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <!--
+    The parent element defines the parent project from which this project will inherit settings and dependencies.
+    This is useful for project modularization and reusing common configurations across multiple projects.
+    -->
+
+    <!-- Model Version -->
+    <modelVersion>4.0.0</modelVersion>
+    <!--
+    The modelVersion element specifies the version of the POM model.
+    This version should be set to 4.0.0 for the current Maven version.
+    -->
+
+    <!-- Project Artifact Information -->
+    <artifactId>common-dtos</artifactId>
+    <!--
+    The artifactId element specifies the unique identifier for this project's artifact (e.g., JAR, WAR, etc.).
+    In this case, it is "common-dtos," representing the "common data transfer objects" project.
+    -->
+
+    <!-- Project Dependencies -->
+    <dependencies>
+        <!--
+        The dependencies section specifies the project's dependencies on external libraries or other projects.
+        Each dependency element declares a Maven artifact with its groupId, artifactId, and version.
+        -->
+
+
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+            <!--
+            The lombok dependency provides support for reducing boilerplate code in Java classes.
+            It is marked as "optional" since its usage is optional, and it is typically used during development.
+            -->
+        </dependency>
+    </dependencies>
+    <!--
+    End of Dependencies Section.
+    -->
+
+</project>
+        <!-- End of pom.xml -->

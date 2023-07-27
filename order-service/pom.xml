@@ -1,0 +1,133 @@
+<!-- pom.xml -->
+<!-- This is the Maven Project Object Model (POM) file, which defines the project's metadata, dependencies, and build settings. -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--
+    The project element is the root of the POM.
+    It defines the basic project information and its configuration.
+    -->
+
+    <!-- Parent Project Information -->
+    <parent>
+        <!-- Define the parent project's artifactId, groupId, and version. -->
+        <artifactId>saga-choreography-pattern</artifactId>
+        <groupId>com.javatechie</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <!--
+    The parent element defines the parent project from which this project will inherit settings and dependencies.
+    This is useful for project modularization and reusing common configurations across multiple projects.
+    -->
+
+    <!-- Model Version -->
+    <modelVersion>4.0.0</modelVersion>
+    <!--
+    The modelVersion element specifies the version of the POM model.
+    This version should be set to 4.0.0 for the current Maven version.
+    -->
+
+    <!-- Project Artifact Information -->
+    <artifactId>order-service</artifactId>
+    <!--
+    The artifactId element specifies the unique identifier for this project's artifact (e.g., JAR, WAR, etc.).
+    In this case, it is "order-service," representing the order service module within the project.
+    -->
+
+    <!-- Project Dependencies -->
+    <dependencies>
+        <!--
+        The dependencies section specifies the project's dependencies on external libraries or other projects.
+        Each dependency element declares a Maven artifact with its groupId, artifactId, and version.
+        -->
+
+        <!-- Spring Boot Starter Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <!--
+            The spring-boot-starter-data-jpa dependency includes the necessary dependencies for Spring Data JPA support.
+            It enables the usage of Spring Data repositories and JPA for data access.
+            -->
+        </dependency>
+
+        <!-- Spring Boot Starter WebFlux -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <!--
+            The spring-boot-starter-webflux dependency includes the necessary dependencies for building reactive web applications
+            using Spring WebFlux, which provides a reactive programming model for handling HTTP requests.
+            -->
+        </dependency>
+
+        <!-- Spring Cloud Stream -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream</artifactId>
+            <!--
+            The spring-cloud-stream dependency provides support for building event-driven microservices using Spring Cloud Stream.
+            It enables message-driven communication using message brokers such as Kafka or RabbitMQ.
+            -->
+        </dependency>
+
+        <!-- Spring Cloud Stream Binder Kafka -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-kafka</artifactId>
+            <!--
+            The spring-cloud-stream-binder-kafka dependency provides support for using Apache Kafka as the message broker
+            in Spring Cloud Stream applications.
+            -->
+        </dependency>
+
+        <!-- Spring Kafka -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <!--
+            The spring-kafka dependency provides support for working with Apache Kafka in Spring applications.
+            It enables the usage of KafkaTemplate and KafkaListener for producing and consuming messages to/from Kafka topics.
+            -->
+        </dependency>
+
+        <!-- PostgreSQL Driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+            <!--
+            The postgresql dependency provides the PostgreSQL JDBC driver.
+            It is marked with the "runtime" scope, meaning it is only required at runtime (not for compilation or testing).
+            -->
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+            <!--
+            The lombok dependency provides support for reducing boilerplate code in Java classes.
+            It is marked as "optional" since its usage is optional, and it is typically used during development.
+            -->
+        </dependency>
+
+        <!-- Custom Common DTOs -->
+        <dependency>
+            <groupId>com.javatechie</groupId>
+            <artifactId>common-dtos</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <!--
+            The common-dtos dependency represents a custom library for common Data Transfer Objects (DTOs) shared across projects.
+            This version is specified as "0.0.1-SNAPSHOT."
+            -->
+        </dependency>
+    </dependencies>
+    <!--
+    End of Dependencies Section.
+    -->
+
+</project>
+        <!-- End of pom.xml -->

@@ -1,0 +1,86 @@
+# application.yml
+
+# Server Configuration
+# The 'server' section configures the server-related properties for the application.
+server:
+  # Configure the port number on which the application will run.
+  port: 8081
+
+# Spring Configuration
+# The 'spring' section configures Spring-related properties for the application.
+spring:
+  # JPA Configuration
+  # The 'jpa' section configures the Java Persistence API (JPA) properties for database interaction.
+  jpa:
+    # Enable showing SQL statements in logs for debugging purposes.
+    show-sql: true
+
+    # Hibernate Configuration
+    # The 'hibernate' subsection configures Hibernate-specific properties for database schema management.
+    # Behavior of the schema generation tool provided by Hibernate.
+    # Set 'ddl-auto' to 'update' to allow Hibernate to update the schema automatically based on the entity classes.
+    hibernate:
+      ddl-auto: update
+
+      # Additional Hibernate properties for PostgreSQL database.
+      properties:
+        hibernate:
+          # Specifies the Hibernate dialect for PostgreSQL.
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+
+          # Enable SQL formatting in logs for better readability.
+          format_sql: true
+
+  # DataSource Configuration
+  # The 'datasource' section configures the properties for connecting to the PostgreSQL database.
+  datasource:
+    # PostgreSQL database driver class.
+    driver-class-name: org.postgresql.Driver
+
+    # URL to connect to the PostgreSQL database.
+    # Replace 'localhost', '5432', and 'order-service' with appropriate values for your PostgreSQL database.
+    url: jdbc:postgresql://localhost:5432/order-service
+
+    # Username for the database connection.
+    username: dev
+
+    # Password for the database connection.
+    password: Simform@123
+
+  # Spring Cloud Stream Configuration
+  # The 'cloud' section configures properties for Spring Cloud Stream to enable event streaming.
+  cloud:
+    stream:
+      # Stream Function Configuration
+      # The 'function' subsection defines the stream function bean names used for event processing.
+      function:
+        # Define functions that will handle event streaming.
+        # Two functions are defined: "orderSupplier" and "paymentEventConsumer".
+        # These functions process events from Kafka topics.
+        # Each function is defined as a bean and can be accessed using its name.
+        # The "definition" property lists the names of the functions, separated by semicolons.
+        # Here, the functions "orderSupplier" and "paymentEventConsumer" will be created as beans and used for event processing.
+        definition: orderSupplier;paymentEventConsumer
+
+      # Stream Binding Configuration
+      # The 'bindings' subsection configures how the functions interact with Kafka topics.
+      bindings:
+        # Output Binding Configuration for orderSupplier Function
+        # Define how the "orderSupplier" function produces events and sends them to the "order-event" topic.
+        # The "orderSupplier-out-0" binding connects the "orderSupplier" function's output channel to the "order-event" topic.
+        # Here, the number "0" represents the index of the output channel (if there are multiple output channels).
+        # The "destination" property specifies the Kafka topic where the produced events will be sent.
+        # In this case, the events produced by the "orderSupplier" function will be sent to the "order-event" topic.
+        orderSupplier-out-0:
+          destination: order-event
+
+        # Input Binding Configuration for paymentEventConsumer Function
+        # Define how the "paymentEventConsumer" function consumes events from the "payment-event" topic.
+        # The "paymentEventConsumer-in-0" binding connects the "paymentEventConsumer" function's input channel to the "payment-event" topic.
+        # Here, the number "0" represents the index of the input channel (if there are multiple input channels).
+        # The "destination" property specifies the Kafka topic from which the "paymentEventConsumer" function will receive events.
+        # In this case, the "paymentEventConsumer" function will consume events from the "payment-event" topic.
+        paymentEventConsumer-in-0:
+          destination: payment-event
+
+# Note: Replace 'order-event' and 'payment-event' with appropriate Kafka topic names used in your application.

@@ -1,0 +1,91 @@
+
+
+# application.yml
+
+# Server Configuration
+# Configures the properties related to the server on which the application will run.
+server:
+  # The port number on which the application will be accessible.
+  # Change this value if you need the application to run on a different port.
+  port: 8082
+
+# Spring Configuration
+# Configures properties related to the Spring framework and database connection.
+
+# DataSource Configuration
+# Configures the properties for connecting to the PostgreSQL database.
+spring:
+  datasource:
+    # Specifies the PostgreSQL database driver class.
+    # You don't need to change this unless you use a different database.
+    driver-class-name: org.postgresql.Driver
+
+    # URL to connect to the PostgreSQL database.
+    # Replace 'localhost', '5432', and 'payment-service' with the appropriate values for your PostgreSQL database.
+    url: jdbc:postgresql://localhost:5432/payment-service
+
+    # Username for the database connection.
+    # Modify this value to the appropriate username for your PostgreSQL database.
+    username: dev
+
+    # Password for the database connection.
+    # Modify this value to the appropriate password for your PostgreSQL database.
+    password: Simform@123
+
+  # JPA Configuration
+  # Configures properties for the Java Persistence API (JPA) for interacting with the database.
+
+  # Show SQL Statements
+  # Enables/disables showing SQL statements in the application logs for debugging purposes.
+  # Set 'true' to display SQL statements; set 'false' to hide them.
+  jpa:
+    show-sql: true
+
+    # Hibernate Configuration
+    hibernate:
+      # Schema Generation Behavior
+      # Specifies how Hibernate manages the database schema based on entity classes.
+
+      # 'update' mode allows Hibernate to automatically update the schema based on the entity classes.
+      ddl-auto: update
+
+      # Additional Hibernate properties for PostgreSQL database.
+      properties:
+        hibernate:
+          # Specifies the Hibernate dialect for PostgreSQL.
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+
+          # SQL Formatting
+          # Set 'true' to enable SQL formatting in logs for better readability.
+          format_sql: true
+
+# Spring Cloud Stream Configuration
+# Configures properties for Spring Cloud Stream to enable event streaming.
+
+  cloud:
+    stream:
+      # Stream Function Configuration
+      function:
+        # Define the function that will handle event streaming.
+        # The function named "paymentProcessor" will process events from Kafka topics.
+        # The function is defined as a bean and can be accessed using its name.
+
+        # Function Definition
+        # The "paymentProcessor" function will be created as a bean and used for event processing.
+        definition: paymentProcessor
+
+      # Stream Binding Configuration
+      bindings:
+        # Input Binding Configuration for paymentProcessor Function
+        paymentProcessor-in-0:
+          # Destination topic for the input channel of the paymentProcessor function.
+          # The "paymentProcessor" function will consume events from the "order-event" topic.
+          destination: order-event
+
+        # Output Binding Configuration for paymentProcessor Function
+        paymentProcessor-out-0:
+          # Destination topic for the output channel of the paymentProcessor function.
+          # The "paymentProcessor" function will produce events sent to the "payment-event" topic.
+          destination: payment-event
+
+  # Note: Replace 'order-event' and 'payment-event' with appropriate Kafka topic names used in your application.
