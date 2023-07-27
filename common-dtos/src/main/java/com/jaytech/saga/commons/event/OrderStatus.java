@@ -20,5 +20,10 @@ public enum OrderStatus {
     /**
      * Represents that the order has been cancelled.
      */
-    ORDER_CANCELLED
+    ORDER_CANCELLED,
+
+    /**
+     * Represents that the order status is unknown.
+     */
+    ORDER_STATUS_UNKNOWN
 }

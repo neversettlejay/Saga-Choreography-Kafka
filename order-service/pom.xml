@@ -16,6 +16,18 @@
         <groupId>com.javatechie</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <!--
     The parent element defines the parent project from which this project will inherit settings and dependencies.
     This is useful for project modularization and reusing common configurations across multiple projects.
@@ -124,6 +136,22 @@
             This version is specified as "0.0.1-SNAPSHOT."
             -->
         </dependency>
+
+        <!-- Gives extra features like MapUtils -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
+
+        <!-- Guava library -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>32.1.1-jre</version>
+        </dependency>
+
+
     </dependencies>
     <!--
     End of Dependencies Section.

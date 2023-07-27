@@ -3,11 +3,13 @@ package com.jaytech.saga.order.config;
 import com.jaytech.genericevent.CustomEvent;
 import com.jaytech.saga.commons.event.PaymentEvent;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
 import java.util.function.Consumer;
 
 @Configuration
@@ -16,6 +18,8 @@ public class EventConsumerConfig {
 
     // Inject the OrderStatusUpdateHandler dependency into the configuration class.
     private final OrderStatusUpdateHandler orderStatusUpdateHandler;
+    private final ApplicationEventPublisher publisher;
+
 
     /**
      * Bean Definition for Payment Event Consumer
@@ -43,6 +47,9 @@ public class EventConsumerConfig {
         return (paymentEvent) -> {
             // Extract the orderId from the PaymentEvent.
             Integer orderId = paymentEvent.getPaymentRequestDto().getOrderId();
+            publisher.publishEvent( new CustomEvent(Map.of("PaymentStatus", paymentEvent.getPaymentStatus().name())));
+            publisher.publishEvent( new CustomEvent(Map.of("OrderId", paymentEvent.getPaymentRequestDto().getOrderId().toString())));
+
             // Call the updateOrder() method of the OrderStatusUpdateHandler to update the order status.
             // The lambda function updates the PaymentStatus of the order based on the PaymentEvent's PaymentStatus.
             orderStatusUpdateHandler.updateOrder(orderId, order -> {

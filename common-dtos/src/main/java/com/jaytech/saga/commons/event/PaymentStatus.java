@@ -15,5 +15,10 @@ public enum PaymentStatus {
     /**
      * Represents that the payment has failed or was not successful.
      */
-    PAYMENT_FAILED
+    PAYMENT_FAILED,
+
+    /**
+     * Represents that the payment status is unknown
+     */
+    PAYMENT_STATUS_UNKNOWN
 }
