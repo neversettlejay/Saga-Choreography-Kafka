@@ -49,10 +49,10 @@
     -->
 
 	<!-- Project Artifact Information -->
-	<groupId>com.javatechie</groupId>
+	<groupId>com.jaytech</groupId>
 	<!--
     The groupId element specifies the group or organization that owns this project.
-    In this case, it is "com.javatechie."
+    In this case, it is "com.jaytech."
     -->
 
 	<artifactId>saga-choreography-pattern</artifactId>

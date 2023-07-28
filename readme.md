@@ -31,7 +31,9 @@ Follow these steps to configure Kafka for your project:
 7. **See data inside Topics**:
 `kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic order-event --from-beginning` and `kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic payment-event --from-beginning
    `
-8. **Start Order service , Payment service, Use the API to Send Requests**:
+8. **See all configurations of topic** : `bin/kafka-configs.sh --bootstrap-server localhost:9092 --describe --entity-type topics --entity-name order-event --all` and `bin/kafka-configs.sh --bootstrap-server localhost:9092 --describe --entity-type topics --entity-name payment-event --all`
+9. **To change retention period to 1000 milliseconds** : `bin/kafka-configs.sh --bootstrap-server localhost:9092 --alter --entity-type topics --entity-name order-event --add-config retention.ms=1000` and `bin/kafka-configs.sh --bootstrap-server localhost:9092 --alter --entity-type topics --entity-name payment-event --add-config retention.ms=1000`
+10. **Start Order service , Payment service, Use the API to Send Requests**:
    Use the API to send requests to create orders:
 - API Endpoint: `localhost:8081/order/create` (HTTP POST)
 - Request Body:
