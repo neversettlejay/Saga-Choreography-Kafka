@@ -13,7 +13,7 @@
     <parent>
         <!-- Define the parent project's artifactId, groupId, and version. -->
         <artifactId>saga-choreography-pattern</artifactId>
-        <groupId>com.javatechie</groupId>
+        <groupId>com.jaytech</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <!--
