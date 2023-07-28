@@ -12,8 +12,8 @@
     <!-- Parent Project Information -->
     <parent>
         <!-- Define the parent project's artifactId, groupId, and version. -->
-        <groupId>com.javatechie</groupId>
-        <!-- The groupId of the parent project is "com.javatechie." -->
+        <groupId>com.jaytech</groupId>
+        <!-- The groupId of the parent project is "com.jaytech." -->
         <artifactId>saga-choreography-pattern</artifactId>
         <!-- The artifactId of the parent project is "saga-choreography-pattern." -->
         <version>0.0.1-SNAPSHOT</version>
@@ -21,7 +21,7 @@
     </parent>
     <!--
     The parent element defines the parent project from which this project will inherit settings and dependencies.
-    In this case, it inherits from the parent project with groupId "com.javatechie," artifactId "saga-choreography-pattern," and version "0.0.1-SNAPSHOT."
+    In this case, it inherits from the parent project with groupId "com.jaytech," artifactId "saga-choreography-pattern," and version "0.0.1-SNAPSHOT."
     -->
 
     <!-- Model Version -->
@@ -118,7 +118,7 @@
 
         <!-- Common DTOs -->
         <dependency>
-            <groupId>com.javatechie</groupId>
+            <groupId>com.jaytech</groupId>
             <artifactId>common-dtos</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <!--
