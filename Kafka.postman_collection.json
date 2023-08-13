@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "2d925c3f-865d-478f-9d4d-74363bc76994",
+		"name": "Kafka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19038742"
+	},
+	"item": [
+		{
+			"name": "Create order event",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 101,\n    \"productId\": 10,\n    \"productPrice\": 1310\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/order/create?getStatus=true",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"order",
+						"create"
+					],
+					"query": [
+						{
+							"key": "getStatus",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get single order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/order/fetch?orderId=125",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"order",
+						"fetch"
+					],
+					"query": [
+						{
+							"key": "orderId",
+							"value": "125"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
